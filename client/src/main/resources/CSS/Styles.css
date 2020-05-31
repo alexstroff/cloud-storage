@@ -1,0 +1,26 @@
+.root{
+    -fx-background-color: linear-gradient(skyblue, greenyellow,yellow);
+    -fx-font-style: italic;
+}
+#textField{
+    -fx-background-color: cornsilk;
+    -fx-text-fill: darkblue;
+    -fx-font-style: italic;
+}
+.text-area .content{
+    -fx-background-color: cornsilk;
+}
+/*.list-cell{*/
+/*    -fx-background-color: cornsilk;*/
+/*    -fx-cell-color: cornsilk;*/
+    /*-fx-text-fill: red;*/
+/*}*/
+#textArea{
+    -fx-font-size: 14px;
+    -fx-text-fill: darkblue;
+    -fx-font-family: "Times New Roman"
+}
+#but{
+    -fx-text-fill: brown;
+    -fx-font-family: "Arial Black";
+}
