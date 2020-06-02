@@ -8,9 +8,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.net.Socket;
 
 public class Controller {
@@ -52,6 +50,9 @@ public class Controller {
     Socket socket;
     DataInputStream in;
     DataOutputStream out;
+    FileInputStream fis;
+    FileOutputStream fos;
+
 
     final String IP_ADRESS = "localhost";
     final int PORT = 8189;
@@ -101,6 +102,7 @@ public class Controller {
             socket = new Socket(IP_ADRESS, PORT);
             in = new DataInputStream(socket.getInputStream());
             out = new DataOutputStream(socket.getOutputStream());
+
 
             new Thread(new Runnable() {
                 @Override
@@ -215,5 +217,32 @@ public class Controller {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void sendFile(ActionEvent actionEvent) {
+        try {
+            out.writeUTF("/sendFile");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        File file = new File("troll.avi");
+
+        System.out.println("START TRANS");
+        try(FileInputStream fis = new FileInputStream(file)){
+        BufferedOutputStream bof = new BufferedOutputStream(out, 10240);
+        int x;
+        byte[] buffer = new byte[10240];
+        while ((x = fis.read(buffer)) != -1){
+            bof.write(buffer, 0, x);
+            bof.flush();
+        }
+            System.out.println("/endOfTrans");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println("client send");
     }
 }
