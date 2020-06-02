@@ -49,7 +49,8 @@
                 <VBox.margin>
                     <Insets right="5"></Insets>
                 </VBox.margin>
-                <Button fx:id="but" VBox.vgrow="ALWAYS" text="Отправить" onAction="#sendMsg"></Button>
+                <Button fx:id="but" VBox.vgrow="ALWAYS" text="Отправить сообщение" onAction="#sendMsg"></Button>
+                <Button fx:id="butFile" VBox.vgrow="ALWAYS" text="Отправить файл" onAction="#sendFile"></Button>
             </HBox>
         </VBox>
     </HBox>
